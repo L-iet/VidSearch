@@ -19,6 +19,7 @@ def getYTVidID(link):
 		if not '/embed' in link:
 			ind = link.find('?v=') #TODO: use regex to ensure we get only the ID in a long link with other parameters
 			end = link.find('&')
+			if end == -1: end = len(link) + 1
 			id_ = link[ind+3:end]
 
 		else:

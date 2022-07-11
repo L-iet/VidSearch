@@ -16,9 +16,9 @@
 	<div style="padding: 120px;">
 		<form action="/searchResult" method="post">
 			<p>YouTube Video ID or Link</p>
-			<input type="text" name="link">
+			<input type="text" name="link" required>
 			<p>Word to search for</p>
-			<input type="text" name="word" width="50px">
+			<input type="text" name="word" width="50px" required>
 			<p>Timestamp to start searching (timestamp in seconds, defaults to start of video):</p>
 			<input type="number" name="startTime" min="0" max="10800" value="0">
 			<p>Timestamp to stop searching (timestamp in seconds, defaults to end of video):</p>

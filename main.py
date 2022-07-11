@@ -117,7 +117,7 @@ def getLink():
 		url = f"https://www.youtube.com/embed/{vidID}?start={round(times[0])}"
 		return render_template('displayVideo.html',url_for_vid=url,times=list(map(int, times)),timestr=timestr, enum=enumerate )
 	except TranscriptsDisabled:
-		return "An error occurred, or we can't currently transcibe this video."
+		return "An error occurred, or we can't currently transcribe this video."
 
 	return "Default Page"
 

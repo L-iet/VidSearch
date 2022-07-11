@@ -17,8 +17,10 @@ port = os.environ['PORT']
 def getYTVidID(link):
 	if 'youtube.com' in link:
 		if not '/embed' in link:
-			ind = link.find('?v=')
-			id_ = link[ind+3:]
+			ind = link.find('?v=') #TODO: use regex to ensure we get only the ID in a long link with other parameters
+			end = link.find('&')
+			id_ = link[ind+3:end]
+
 		else:
 			s_ind, e_ind = link.find('/embed') + 7, link.find('?')
 			if e_ind == -1: e_ind = len(link) + 1

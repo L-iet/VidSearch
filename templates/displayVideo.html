@@ -6,7 +6,7 @@
 <meta http-equiv='expires' content='0'>
 <meta http-equiv='pragma' content='no-cache'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>YTAudiofinder</title>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 	<style>
@@ -20,7 +20,7 @@
 			</iframe>
 		</span>
 		<span style="float:left;">
-			{% for i,t in enum(times) %}
+			{% for i,t in enum(timestr) %}
 	        <div style="background-color: #000; margin: 20px" class="result">
 	            <p style="font-size: 20px">Result {{i+1}} at time {{t}}</p>
 	        </div>
@@ -28,7 +28,7 @@
 		</span>
 	</div>
 	<script type="text/javascript" src="../static/app.js?v=1.1"></script>
-	<script type="text/javascript">times = getTimes({{ times|tojson }})</script>
+	<script type="text/javascript">[times, timestr] = getTimes({{ times|tojson }}, {{ timestr|tojson }});</script>
 	
 	<button id="prev">Previous</button> <button id="nxt">Next</button>
 </body>

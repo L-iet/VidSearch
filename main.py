@@ -5,7 +5,8 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled
   
 
-load_dotenv('.env')
+#load_dotenv('.env')
+port = os.environ['PORT']
 
 def getYTVidID(link):
 	if 'youtube.com' in link:
@@ -72,10 +73,13 @@ class Transcript:
 			for ind in inds]
 
 
+def to_timestamp(t):
+	t = int(t)
+	hrs = t // 3600
+	m = (t // 60) - (60*hrs)
+	s = t % 60
+	return f"{str(hrs).rjust(2,'0') if hrs else ''}:{str(m).rjust(2,'0')}:{str(s).rjust(2,'0')}"
 
-
-DK = os.environ['DEEPGRAM_KEY']
-YTK = os.environ['YTKEY']
 
 app = Flask(__name__)
 
@@ -83,7 +87,7 @@ app = Flask(__name__)
 def home():
 	return render_template('index.html')
 
-@app.route('/somePath',methods=['POST'])
+@app.route('/searchResult',methods=['POST'])
 def getLink():
 	link = request.form['link'] #sanitise the links if necessary
 	word = request.form['word'].lower()
@@ -102,15 +106,16 @@ def getLink():
 	  
 		T_obj = Transcript(srt)
 		times = T_obj.find_times(word, start_time, stop_time, n)
-		print(times)
+		if len(times) == 0: return "No results found in this video."
+		timestr = list(map(to_timestamp, times))
 		url = f"https://www.youtube.com/embed/{vidID}?start={round(times[0])}"
-		return render_template('displayVideo.html',url_for_vid=url,times=list(map(int, times)), enum=enumerate )
+		return render_template('displayVideo.html',url_for_vid=url,times=list(map(int, times)),timestr=timestr, enum=enumerate )
 	except TranscriptsDisabled:
-		print('Transcripts are disabled for this video.')
+		return "An error occurred, or we can't currently transcibe this video."
 
-	return "Hello men"
+	return "Default Page"
 
 
 if __name__ == '__main__':
-	app.run(port=7777)
+	app.run(port=port)
 

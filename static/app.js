@@ -1,10 +1,12 @@
 var times = [];
+var timestr = [];
 var currInd = 0;
 
 
-function getTimes(times_) {
+function getTimes(times_, timestr_) {
 	times = times_;
-	return times_;
+	timestr = timestr_;
+	return [times_, timestr_];
 }
 
 
@@ -25,6 +27,22 @@ function setNewSrc(currInd) {
 
 
 }
+
+// function to_timestamp(t) {
+// 	let hrs = Math.floor(t / 3600);
+// 	let minutes = Math.floor(t / 60);
+// 	let seconds = t % 60;
+// 	minutes = (minutes - 60 * hrs);
+// 	var hrstr;
+// 	var minstr;
+// 	var secstr;
+// 	if (hrs == 0) {
+// 		hrstr = "";
+// 	} else hrstr = String(hrs).padStart(2,'0');
+// 	minstr = String(minutes).padStart(2,'0');
+// 	secstr = String(seconds).padStart(2,'0');
+// 	return hrstr + ":" + minstr + ":" + secstr;
+// }
 
 function prev_() {
 	if (currInd <= 0) currInd = 0;

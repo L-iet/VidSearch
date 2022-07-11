@@ -60,7 +60,9 @@ class Transcript:
 			stop_ind = len(self.transcript_list)
 		else:
 			stop_ind = self.find_index(stop_time) + 1
-		print(start_ind,stop_ind)
+		if start_ind == -1: start_ind = 0
+		if stop_ind == -1: stop_ind = len(self.transcript_list)
+
 		for indx, transc in enumerate(self.transcript_list[start_ind:stop_ind]):
 			if transc['text'].find(word) >= 0:
 				ret_val.append(indx + start_ind)
@@ -102,8 +104,7 @@ def getLink():
 	stop_time = request.form['stopTime']
 	stop_time = int(stop_time)
 	n = int(request.form['n'])
-	if start_time > stop_time:
-		print(start_time, stop_time)
+	if start_time > stop_time and stop_time != 1:
 		return "Invalid range given"
 
 	try:

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<style>
+		body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+	</style>
+</head>
+<body style="background-color: #002010; color: #ffffff;">
+	<div>
+		<span>
+			<iframe width="840" height="630" src="{{ url_for_vid }}" id="video" allow="autoplay">
+			</iframe>
+		</span>
+		<span style="float:left;">
+			{% for i,t in enum(times) %}
+	        <div style="background-color: #000; margin: 20px" class="result">
+	            <p style="font-size: 20px">Result {{i+1}} at time {{t}}</p>
+	        </div>
+	        {% endfor %}
+		</span>
+	</div>
+	<script type="text/javascript" src="../static/app.js?v=1.1"></script>
+	<script type="text/javascript">times = getTimes({{ times|tojson }})</script>
+	
+	<button id="prev">Previous</button> <button id="nxt">Next</button>
+</body>
+</html>
+

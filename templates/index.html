@@ -4,29 +4,31 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<style>
-		body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/s1.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
-<body style="background-color: #002010; color: #ffffff;">
-	<h1 style="text-align: center;">YT Audiofinder</h1>
-	<h3 style="text-align: center;">Search a Youtube video for instances when a word or phrase was spoken</h3>
-	<div style="padding: 120px;">
-		<form action="/searchResult" method="post">
-			<p>YouTube Video ID or Link</p>
-			<input type="text" name="link" required>
-			<p>Word to search for</p>
-			<input type="text" name="word" width="50px" required>
-			<p>Timestamp to start searching (timestamp in seconds, defaults to start of video):</p>
-			<input type="number" name="startTime" min="0" max="10800" value="0">
-			<p>Timestamp to stop searching (timestamp in seconds, defaults to end of video):</p>
-			<input type="number" name="stopTime" min="1" max="10800" value="1">
-			<p>Max number of occurences to find (defaults to 5)</p>
-			<input type="number" name="n" min="0" value="5">
-			<input type="submit" value="Submit">
-		</form>
+<body>
+	<div class="bg-image"></div>
+	<div class="bg-text">
+		<h1 align="center">YT Audiofinder</h1>
+		<h3 align="center">Search a Youtube video for instances when a word or phrase was spoken</h3>
+		<div style="padding: 60px;">
+			<form action="/searchResult" method="post">
+				<p>YouTube Video ID or Link</p>
+				<input type="text" name="link" required>
+				<p>Word to search for</p>
+				<input type="text" name="word" width="50px" required>
+				<p>Timestamp to start searching (timestamp in seconds, defaults to start of video):</p>
+				<input type="number" name="startTime" min="0" max="10800" value="0">
+				<p>Timestamp to stop searching (timestamp in seconds, defaults to end of video):</p>
+				<input type="number" name="stopTime" min="1" max="10800" value="1">
+				<p>Max number of occurences to find (defaults to 5)</p>
+				<input type="number" name="n" min="0" value="5">
+				<button type="Submit">Submit</button>
+			</form>
+			
+		</div>
 	</div>
 </body>
 </html>

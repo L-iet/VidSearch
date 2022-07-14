@@ -12,7 +12,7 @@ from youtube_transcript_api._errors import TranscriptsDisabled
   
 
 #load_dotenv('.env')
-port = os.environ['PORT']
+port = os.environ.get('PORT', 7777)
 
 def getYTVidID(link):
 	if 'youtube.com' in link:

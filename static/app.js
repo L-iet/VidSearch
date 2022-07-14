@@ -27,7 +27,7 @@ function setNewSrc(currInd) {
 	let ress = document.getElementsByClassName("result");
 	for (i=0; i<ress.length; i = i+1){
 		if (i==currInd)
-			ress[i].style.backgroundColor = "#26a9e0";
+			ress[i].style.backgroundColor = "#2475c0";
 		else ress[i].style.backgroundColor = "#000";
 	}
 
@@ -80,7 +80,7 @@ window.onload = function() {
 	for (i=0; i<ress.length; i = i+1){
 		ress[i].addEventListener('click', resultClicked);
 	}
-	ress[0].style.backgroundColor = "#26a9e0";
+	ress[0].style.backgroundColor = "#2475c0";
 
 }
 

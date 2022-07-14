@@ -15,24 +15,34 @@
 	<div class="bg-image"></div>
 	<div class="bg-text">
 		<div>
-			<span>
-				<iframe width="700" height="500" src="{{ url_for_vid }}" id="video" allow="autoplay">
-				</iframe>
-			</span>
-			<span style="float:left;">
+			
+			<div style="float:left; width: 30%;">
 				{% for i,t in enum(timestr) %}
-		        <div style="background-color: #000; margin: 20px" class="result">
-		            <p style="font-size: 20px">Result {{i+1}} at time {{t}}</p>
+		        <div style="background-color: #000; float: left; width: 50%;" class="result">
+		            <p style="font-size: 1vw;">Result {{i+1}} at time {{t}}</p>
 		        </div>
+		        <div style="height: 2px; width:100%; clear:both;"></div>
 		        {% endfor %}
-			</span>
+			</div>
+			<div style="width: 50%;aspect-ratio: 7/5; background-color: '#ff0000'; float: left;">
+				<iframe width="100%" height="100%" src="{{ url_for_vid }}" id="video" allow="autoplay">
+				</iframe>
+			</div>
 		</div>
 		<script type="text/javascript" src="../static/app.js?v=1.1"></script>
 		<script type="text/javascript">[times, timestr] = getTimes({{ times|tojson }}, {{ timestr|tojson }});</script>
 		
-		<button id="prev">Previous</button> <button id="nxt">Next</button>
-		<div height=></div>
-		<button id="backHome" onclick="window.location='/';">Back to home </button>
+		<div style="float: right; width: 20%;">
+			<div style="float: left;">
+				<button id="prev" style="font-size: 1vw;">Previous</button>
+			</div>
+			<div style="float: right;">
+				<button id="nxt" style="font-size: 1vw;">Next</button>
+			</div>
+		</div>
+		<div style="float: left;">
+			<button id="backHome" style="font-size: 1vw;" onclick="window.location='/';">Back to home </button>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
       html, body {
       min-height: 100%;
+      overflow-x: hidden;
       }
       body, div, form, input, select, p { 
       padding: 0;
@@ -16,7 +17,7 @@
       }
       #nxt {
             float: right;
-            width: 150%;
+            width: 100%;
       }
       #backHome {
             float: left;

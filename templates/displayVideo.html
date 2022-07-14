@@ -7,32 +7,33 @@
 <meta http-equiv='pragma' content='no-cache'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>YTAudiofinder</title>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<style>
-		body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/s1.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
-<body style="background-color: #002010; color: #ffffff;">
-	<div>
-		<span>
-			<iframe width="840" height="630" src="{{ url_for_vid }}" id="video" allow="autoplay">
-			</iframe>
-		</span>
-		<span style="float:left;">
-			{% for i,t in enum(timestr) %}
-	        <div style="background-color: #000; margin: 20px" class="result">
-	            <p style="font-size: 20px">Result {{i+1}} at time {{t}}</p>
-	        </div>
-	        {% endfor %}
-		</span>
+<body>
+	<div class="bg-image"></div>
+	<div class="bg-text">
+		<div>
+			<span>
+				<iframe width="700" height="500" src="{{ url_for_vid }}" id="video" allow="autoplay">
+				</iframe>
+			</span>
+			<span style="float:left;">
+				{% for i,t in enum(timestr) %}
+		        <div style="background-color: #000; margin: 20px" class="result">
+		            <p style="font-size: 20px">Result {{i+1}} at time {{t}}</p>
+		        </div>
+		        {% endfor %}
+			</span>
+		</div>
+		<script type="text/javascript" src="../static/app.js?v=1.1"></script>
+		<script type="text/javascript">[times, timestr] = getTimes({{ times|tojson }}, {{ timestr|tojson }});</script>
+		
+		<button id="prev">Previous</button> <button id="nxt">Next</button>
+		<div height=></div>
+		<button id="backHome" onclick="window.location='/';">Back to home </button>
 	</div>
-	<script type="text/javascript" src="../static/app.js?v=1.1"></script>
-	<script type="text/javascript">[times, timestr] = getTimes({{ times|tojson }}, {{ timestr|tojson }});</script>
-	
-	<button id="prev">Previous</button> <button id="nxt">Next</button>
-	<br>
-	<button onclick="window.location='/';">Back to home </button>
 </body>
 </html>
 

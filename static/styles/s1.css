@@ -9,6 +9,23 @@
       font-size: 16px;
       color: #eee;
       }
+      #prev {
+            float:left;
+            width: 10%;
+            margin-left: 20%;
+      }
+      #nxt {
+            float: right;
+            width: 10%;
+            margin-right: 20%;
+      }
+      #backHome {
+            float: left;
+            width: 20%;
+            margin-left: 40%;
+            padding-top: 20px;
+      }
+
       .bg-image {
             background-image: url("images/backg.jpg");
             background-repeat: no-repeat;

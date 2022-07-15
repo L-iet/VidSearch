@@ -109,7 +109,7 @@ def post_m():
 	with smtplib.SMTP_SSL("smtp.gmail.com", _port, context=context) as server:
 		server.login(my_email0, passw)
 		server.sendmail(my_email0, my_email1, f"{message}\nFrom: {email} {name}\nMessage from my website")
-	return redirect("https://google.com/")
+	return redirect("https://l-iet.github.io/")
 
 @app.route('/')
 def home():

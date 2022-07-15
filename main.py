@@ -6,12 +6,12 @@
 
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled
   
 
-#load_dotenv('.env')
+load_dotenv('.env')
 port = os.environ.get('PORT', 7777)
 
 def getYTVidID(link):
@@ -93,6 +93,23 @@ def to_timestamp(t):
 
 
 app = Flask(__name__)
+
+@app.route('/custom', methods=['POST'])
+def post_m():
+	name = request.form['name']
+	email = request.form['email']
+	message = request.form['message']
+	import smtplib, ssl
+	_port = 465
+	passw = os.environ['PASSW']
+	my_email0 = os.environ['MY_EMAIL_0']
+	my_email1 = os.environ['MY_EMAIL_1']
+	context = ssl.create_default_context()
+
+	with smtplib.SMTP_SSL("smtp.gmail.com", _port, context=context) as server:
+		server.login(my_email0, passw)
+		server.sendmail(my_email0, my_email1, f"{message}\nFrom: {email} {name}\nMessage from my website")
+	return redirect("https://google.com/")
 
 @app.route('/')
 def home():

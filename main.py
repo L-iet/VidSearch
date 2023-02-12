@@ -145,7 +145,7 @@ def getLink():
 	except TranscriptsDisabled:
 		return "An error occurred, or we can't currently transcribe this video."
 
-	return "Default Page"
+	return render_template('index.html')
 
 
 if __name__ == '__main__':

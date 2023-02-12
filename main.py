@@ -9,9 +9,14 @@ from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled
-  
 
-load_dotenv('.env')
+import flask.cli
+flask.cli.show_server_banner = lambda *args: None # disable wsgi warning message
+
+try:
+	load_dotenv('.env')
+except Exception as e:
+	print(e)
 port = os.environ.get('PORT', 7777)
 
 def getYTVidID(link):
